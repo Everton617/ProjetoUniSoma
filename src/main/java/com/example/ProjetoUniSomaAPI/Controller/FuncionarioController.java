@@ -39,10 +39,12 @@ public class FuncionarioController {
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping("/salvarfuncionario")
-    public void saveFuncionarios(@RequestBody FuncionarioRequestDTO data) {
+    public ResponseEntity<String> saveFuncionarios(@RequestBody FuncionarioRequestDTO data) {
+ 
+
         Funcionario funcionarioData = new Funcionario(data);
         repository.save(funcionarioData);
-        return;
+        return ResponseEntity.ok("Funcionário inserido com sucesso!");
     }
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -138,5 +140,7 @@ public class FuncionarioController {
         }
 
     }
+
+    
 
 }
